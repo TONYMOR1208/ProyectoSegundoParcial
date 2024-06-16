@@ -13,19 +13,8 @@ class LibrosController < ApplicationController
 
   # Acción para mostrar todos los libros disponibles
   def index
-    libros_disponibles = Libro.where("num_ejemplares > 0")
-    render json: libros_disponibles, only: [:id, :titulo, :autor], status: :ok
-  end
-
-  # Acción para buscar libros por título o autor
-  def buscar
-    query = params[:query]
-    libros_encontrados = Libro.where("titulo LIKE ? OR autor LIKE ?", "%#{query}%", "%#{query}%")
-    if libros_encontrados.any?
-      render json: libros_encontrados, only: [:id, :titulo, :autor], status: :ok
-    else
-      render json: { message: "No se encontraron libros que coincidan con la búsqueda '#{query}'" }, status: :not_found
-    end
+    libro = Libro.all
+    render json: libro, status: :ok
   end
 
   # Acción para mostrar los detalles de un libro específico
@@ -63,6 +52,6 @@ class LibrosController < ApplicationController
 
   # Método privado para definir los parámetros permitidos para crear o actualizar un libro
   def libro_params
-    params.require(:libro).permit(:titulo, :autor, :genero_id, :ano_publicacion, :num_ejemplares, :editorial_id)
+    params.require(:libro).permit(:titulo, :autor_id, :genero_id, :editorial, :año_publicacion, :num_ejemplares)
   end
 end

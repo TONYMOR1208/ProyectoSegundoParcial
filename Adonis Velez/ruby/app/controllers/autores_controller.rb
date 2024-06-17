@@ -1,5 +1,5 @@
 class AutoresController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  before_action :authorize_request, only: [:create, :index, :show, :update, :destroy]
 
   # Acción para crear una nueva devolución
   def create

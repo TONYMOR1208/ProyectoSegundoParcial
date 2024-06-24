@@ -21,7 +21,7 @@ import com.biblioteca.carlos.model.Usuario;
 
 
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     @Autowired

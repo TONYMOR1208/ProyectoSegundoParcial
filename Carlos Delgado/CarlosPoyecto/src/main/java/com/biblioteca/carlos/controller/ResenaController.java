@@ -20,7 +20,7 @@ import com.biblioteca.carlos.interfacs.services.IResenaService;
 import com.biblioteca.carlos.model.Resena;
 
 @RestController
-@RequestMapping("/api/resenas")
+@RequestMapping("/resenas")
 public class ResenaController {
 
     @Autowired

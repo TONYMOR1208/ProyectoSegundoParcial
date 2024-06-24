@@ -1,7 +1,6 @@
 
 from app.models import Devolucion
 from app import db
-
 def get_all_devoluciones():
     return [devolucion.serialize() for devolucion in Devolucion.query.all()]
 

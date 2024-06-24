@@ -36,7 +36,7 @@ public class Utils {
     }
 
     public static boolean esCalificacionValida(Integer calificacion) {
-        return calificacion != null && calificacion >= 0 && calificacion <= 5;
+        return calificacion != null && calificacion >= 0 && calificacion <= 10;
     }
 
     public static boolean esComentarioValido(String comentario) {

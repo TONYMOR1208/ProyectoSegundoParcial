@@ -1,9 +1,9 @@
 package com.biblioteca.carlos.interfacs.services;
 
-import com.biblioteca.carlos.model.Usuario;
-
 import java.util.List;
 import java.util.Optional;
+
+import com.biblioteca.carlos.model.Usuario;
 
 public interface IUsuarioService {
 

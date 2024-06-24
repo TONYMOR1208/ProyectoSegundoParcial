@@ -2,7 +2,7 @@ from . import db
 
 class Autor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(100))
+    nombre = db.Column(db.String(50))
     bibliografia = db.Column(db.Text)
 
     def serialize(self):
@@ -17,7 +17,7 @@ class Libro(db.Model):
     titulo = db.Column(db.String(100))
     autor_id = db.Column(db.Integer, db.ForeignKey('autor.id'))
     genero_id = db.Column(db.Integer, db.ForeignKey('genero.id'))
-    editorial = db.Column(db.String(100))
+    editorial = db.Column(db.String(50))
     año_publicacion = db.Column(db.Integer)
     num_ejemplares = db.Column(db.Integer)
 
@@ -37,10 +37,10 @@ class Libro(db.Model):
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(100))
-    direccion = db.Column(db.String(200))
+    nombre = db.Column(db.String(50))
+    direccion = db.Column(db.String(50))
     telefono = db.Column(db.String(10))
-    correo = db.Column(db.String(100))
+    correo = db.Column(db.String(50))
     fecha_registro = db.Column(db.Date)
 
     def serialize(self):
@@ -78,7 +78,7 @@ class Devolucion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     prestamo_id = db.Column(db.Integer, db.ForeignKey('prestamo.id'))
     fecha_devolucion = db.Column(db.Date)
-    estado_libro = db.Column(db.String(100))
+    estado_libro = db.Column(db.String(50))
 
     prestamo = db.relationship('Prestamo', backref='devolucion')
 
@@ -161,8 +161,8 @@ class User(db.Model):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), index=True, unique=True)
-    password_hash = db.Column(db.String(256))  # Aumenta el tamaño según sea necesario
+    username = db.Column(db.String(50), index=True, unique=True)
+    password_hash = db.Column(db.String(100)) 
 
     def __repr__(self):
         return f'<User {self.username}>'

@@ -4,5 +4,6 @@ class Genero < ApplicationRecord
   has_many :libros
 
   # Validaciones
-  validates :nombre, presence: true, length: { maximum: 50 }
+  validates :nombre, presence: {message: "El nombre del género no puede estar en blanco" },
+  length: { maximum: 50, message: "El nombre del género debe tener máximo %{count} caracteres"}
 end

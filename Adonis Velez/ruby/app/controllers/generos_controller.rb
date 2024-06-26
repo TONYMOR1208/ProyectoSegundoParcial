@@ -1,5 +1,5 @@
 class GenerosController < ApplicationController
-  before_action :authorize_request, only: [:create, :index, :show, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # Acción para crear un nuevo género
   def create

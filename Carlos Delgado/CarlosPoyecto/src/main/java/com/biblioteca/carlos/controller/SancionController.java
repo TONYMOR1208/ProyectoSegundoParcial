@@ -20,7 +20,7 @@ import com.biblioteca.carlos.interfacs.services.ISancionService;
 import com.biblioteca.carlos.model.Sancion;
 
 @RestController
-@RequestMapping("/api/sancion")
+@RequestMapping("/sancion")
 public class SancionController {
 
     @Autowired

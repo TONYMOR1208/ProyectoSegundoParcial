@@ -1,0 +1,36 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Genero {
+  id: Int!
+  nombre: String!
+}
+
+type Libro {
+  id: Int!
+  titulo: String!
+  autor_id: Int!
+  genero_id: Int!
+  editorial: String!
+  anio_publicacion: Int!
+  num_ejemplares: Int!
+}
+
+type Autor {
+  id: Int!
+  nombre: String!
+  bibliografia: String!
+}
+
+type Query {
+  autores: [Autor!]!
+  autor(id: Int!): Autor!
+  generarPdfAutores(consultaNombre: String, autorId: Int): String!
+  generos: [Genero!]!
+  genero(id: Int!): Genero!
+  generarPdf(consultaNombre: String, generoId: Int): String!
+  libros: [Libro!]!
+  libro(id: Int!): Libro!
+  generarPdfLibros(consultaNombre: String, libroId: Int): String!
+}

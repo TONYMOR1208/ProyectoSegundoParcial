@@ -1,12 +1,12 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Libro } from 'src/graphql/libro/entities/libro.entity';
-import { Usuario } from 'src/graphql/usuario/entities/usuario.entity';
+import { Libro } from '../../libro/entities/libro.entity';
+import { Usuario } from '../../usuario/entities/usuario.entity';
 
 
 @ObjectType()
-@Entity({name: 'reserva' })
-export class Reserva {
+@Entity('resena')
+export class Resena {
   @Field(() => Int)
   @PrimaryGeneratedColumn()
   id: number;
@@ -19,23 +19,23 @@ export class Reserva {
   @Column()
   usuario_id: number;
 
-  @Field()
+  @Field(() => Int)
   @Column()
-  fecha_reserva: Date;
+  calificacion: number;
 
   @Field()
   @Column()
-  fecha_expiracion: Date;
+  comentario: string;
 
   @ManyToOne(
     () => Libro, 
-    libro => libro.reserva,
+    libro => libro.resena,
     {eager:true })
   libro: Libro;
 
- @ManyToOne(
+  @ManyToOne(
     () => Usuario, 
-    usuario => usuario.reserva,
+    usuario => usuario.resena,
     {eager:true })
   usuario: Usuario;
 }

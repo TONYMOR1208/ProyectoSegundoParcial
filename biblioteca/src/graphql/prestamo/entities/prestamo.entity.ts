@@ -1,7 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Libro } from 'src/graphql/libro/entities/libro.entity';
-//import { Usuario } from './usuario.entity';
+import { Usuario } from 'src/graphql/usuario/entities/usuario.entity';
 import { Devolucion } from 'src/graphql/devolucion/entities/devolucion.entity';
 
 
@@ -38,11 +38,11 @@ export class Prestamo {
     {eager:true })
   libro: Libro;
 
-/*   @ManyToOne(
+@ManyToOne(
     () => Usuario, 
     usuario => usuario.prestamo,
     {eager:true })
-  usuario: Usuario; */
+  usuario: Usuario;
 
   @OneToMany(
     () => Devolucion, 

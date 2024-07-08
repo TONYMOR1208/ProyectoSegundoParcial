@@ -3,7 +3,7 @@ import { Autor } from '../../autor/entities/autor.entity';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Genero } from '../../genero/entities/genero.entity';
 import { Prestamo } from '../../prestamo/entities/prestamo.entity';
-//import { Resena } from './resena.entity';
+import { Resena } from '../../resena/entities/resena.entity';
 import { Reserva } from '../../reserva/entities/reserva.entity';
 
 
@@ -64,12 +64,12 @@ export class Libro {
   {cascade: true })
   prestamo: Prestamo[];
 
-/*   @OneToMany(
+@OneToMany(
   () => Resena, 
    resena => resena.libro,
     {cascade: true })
   resena: Resena[];
- */
+
   @OneToMany(
     () => Reserva, 
     reserva => reserva.libro,

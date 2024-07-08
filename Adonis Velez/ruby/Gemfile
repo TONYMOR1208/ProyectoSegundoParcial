@@ -14,6 +14,8 @@ gem 'pg'
 gem 'jwt'
 gem 'bcrypt'
 
+gem 'scrypt'
+
 gem 'dotenv-rails', groups: [:development, :test]
 
 

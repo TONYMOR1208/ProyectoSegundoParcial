@@ -2,9 +2,9 @@ import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Autor } from '../../autor/entities/autor.entity';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Genero } from '../../genero/entities/genero.entity';
-//import { Prestamo } from './prestamo.entity';
-//import { Resena } from './resena.entity';
-//import { Reserva } from './reserva.entity';
+import { Prestamo } from '../../prestamo/entities/prestamo.entity';
+import { Resena } from '../../resena/entities/resena.entity';
+import { Reserva } from '../../reserva/entities/reserva.entity';
 
 
 @ObjectType()
@@ -58,21 +58,21 @@ export class Libro {
     @JoinColumn({ name: 'genero_id' })
   genero: Genero;
 
-  //@OneToMany(
-    //() => Prestamo, 
-    //prestamo => prestamo.libro,
-    //{cascade: true })
-  //prestamo: Prestamo[];
+  @OneToMany(
+  () => Prestamo, 
+  prestamo => prestamo.libro,
+  {cascade: true })
+  prestamo: Prestamo[];
 
-  //@OneToMany(
-   // () => Resena, 
-   // resena => resena.libro,
-    //{cascade: true })
-  //resena: Resena[];
+@OneToMany(
+  () => Resena, 
+   resena => resena.libro,
+    {cascade: true })
+  resena: Resena[];
 
-  //@OneToMany(
-    //() => Reserva, 
-    //reserva => reserva.libro,
-    //{cascade: true })
-  //reserva: Reserva[];
+  @OneToMany(
+    () => Reserva, 
+    reserva => reserva.libro,
+  {cascade: true })
+  reserva: Reserva[];
 }

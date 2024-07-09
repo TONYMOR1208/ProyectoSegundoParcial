@@ -15,12 +15,12 @@ export class ResenaResolver {
     return this.resenaService.findAll();
   }
 
-  @Query(() => Resena, { name: 'Resena' })
+  @Query(() => Resena, { name: 'Resenas' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.resenaService.findOne(id);
   }
 
-  @Query(() => String, { name: 'generarPdfLibros' })
+  @Query(() => String, { name: 'generarPdfResena' })
   async generatePdfQuery(
     @Args('consultaNombre', { nullable: true }) consultaNombre?: string,
     @Args('resenaId', { nullable: true, type: () => Int }) resenaId?: number,

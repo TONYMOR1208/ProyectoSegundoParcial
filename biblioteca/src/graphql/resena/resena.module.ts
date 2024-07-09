@@ -11,5 +11,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     TypeOrmModule.forFeature([Resena]),
   ],
   providers: [ResenaResolver, ResenaService, PdfGeneratorService],
+  exports: [ResenaService]
 })
 export class ResenaModule {}

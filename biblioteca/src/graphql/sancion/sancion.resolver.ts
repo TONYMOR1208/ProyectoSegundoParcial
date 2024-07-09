@@ -1,42 +1,41 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { SancionService } from './sancion.service';
 import { Sancion } from './entities/sancion.entity';
-import { ResenaService } from '../resena/resena.service';
 import { PdfGeneratorService } from '../pdf.service';
-import { Resena } from '../resena/entities/resena.entity';
+//import { Sancion } from '../sancion/entities/sancion.entity';
+import { SancionService } from './sancion.service';
 
 @Resolver(() => Sancion)
 export class SancionResolver {
   constructor(
-    private readonly resenaService: ResenaService,
+    private readonly sancionService: SancionService,
     private readonly pdfGeneratorService: PdfGeneratorService,
   ) {}
 
-  @Query(() => [Resena], { name: 'Resena' })
+  @Query(() => [Sancion], { name: 'Sancion' })
   findAll() {
-    return this.resenaService.findAll();
+    return this.sancionService.findAll();
   }
 
-  @Query(() => Resena, { name: 'Resena' })
+  @Query(() => Sancion, { name: 'Sanciones' })
   findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.resenaService.findOne(id);
+    return this.sancionService.findOne(id);
   }
 
-  @Query(() => String, { name: 'generarPdfPrestamos' })
+  @Query(() => String, { name: 'generarPdfSancion' })
   async generatePdfQuery(
     @Args('consultaNombre', { nullable: true }) consultaNombre?: string,
-    @Args('ResenaId', { nullable: true, type: () => Int }) ResenaId?: number,
+    @Args('sancionId', { nullable: true, type: () => Int }) sancionId?: number,
   ) {
     let data;
 
-    if (ResenaId) {
-      const prestamo = await this.resenaService.findOne(ResenaId);
-      if (!Resena) {
-        throw new Error(`No se encontró ningún préstamo con ID ${ResenaId}`);
+    if (sancionId) {
+      const prestamo = await this.sancionService.findOne(sancionId);
+      if (!Sancion) {
+        throw new Error(`No se encontró ningún préstamo con ID ${sancionId}`);
       }
-      data = [prestamo]; // Generar PDF para un préstamo específico
+      data = [Sancion]; // Generar PDF para un préstamo específico
     } else {
-      data = await this.resenaService.findAll(); // Generar PDF para todos los préstamos
+      data = await this.sancionService.findAll(); // Generar PDF para todos los préstamos
     }
 
     try {

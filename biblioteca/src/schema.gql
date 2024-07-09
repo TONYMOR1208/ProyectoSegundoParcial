@@ -7,6 +7,60 @@ type Genero {
   nombre: String!
 }
 
+type Resena {
+  id: Int!
+  libro_id: Int!
+  usuario_id: Int!
+  calificacion: Int!
+  comentario: String!
+}
+
+type Reserva {
+  id: Int!
+  libro_id: Int!
+  usuario_id: Int!
+  fecha_reserva: DateTime!
+  fecha_expiracion: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Sancion {
+  id: Int!
+  usuario_id: Int!
+  fecha_inicio: DateTime!
+  fecha_fin: DateTime!
+  descripcion: String!
+}
+
+type Usuario {
+  id: Int!
+  nombre: String!
+  direccion: String!
+  telefono: String!
+  correo: String!
+  fecha_registro: DateTime!
+}
+
+type Devolucion {
+  id: Int!
+  prestamo_id: Int!
+  fecha_devolucion: DateTime!
+  estado_libro: String!
+}
+
+type Prestamo {
+  id: Int!
+  libro_id: Int!
+  usuario_id: Int!
+  fecha_prestamo: DateTime!
+  fecha_vencimiento: DateTime!
+  devuelto: Boolean!
+}
+
 type Libro {
   id: Int!
   titulo: String!
@@ -33,4 +87,22 @@ type Query {
   libros: [Libro!]!
   libro(id: Int!): Libro!
   generarPdfLibros(consultaNombre: String, libroId: Int): String!
+  prestamos: [Prestamo!]!
+  prestamo(id: Int!): Prestamo!
+  generarPdfPrestamos(consultaNombre: String, prestamoId: Int): String!
+  devoluciones: [Devolucion!]!
+  devolucion(id: Int!): Devolucion!
+  generarPdfDevoluciones(consultaNombre: String, devolucionId: Int): String!
+  reservas: [Reserva!]!
+  reserva(id: Int!): Reserva!
+  generarPdfReservas(consultaNombre: String, reservaId: Int): String!
+  Resena: [Resena!]!
+  Resenas(id: Int!): Resena!
+  generarPdfResena(consultaNombre: String, resenaId: Int): String!
+  Usuario: [Usuario!]!
+  Usuarios(id: Int!): Usuario!
+  generarPdfUsuario(consultaNombre: String, UsuarioId: Int): String!
+  Sancion: [Sancion!]!
+  Sanciones(id: Int!): Sancion!
+  generarPdfSancion(consultaNombre: String, sancionId: Int): String!
 }

@@ -14,12 +14,12 @@ export class UsuarioResolver {
     return this.usuarioService.findAll();
   }
 
-  @Query(() => Usuario, { name: 'Usuario' })
+  @Query(() => Usuario, { name: 'Usuarios' })
   findOne(@Args('id', { type: () => Int }) id: number) {
     return this.usuarioService.findOne(id);
   }
 
-  @Query(() => String, { name: 'generarPdfPrestamos' })
+  @Query(() => String, { name: 'generarPdfUsuario' })
   async generatePdfQuery(
     @Args('consultaNombre', { nullable: true }) consultaNombre?: string,
     @Args('UsuarioId', { nullable: true, type: () => Int }) UsuarioId?: number,

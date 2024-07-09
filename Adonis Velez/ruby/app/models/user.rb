@@ -1,7 +1,7 @@
 class User < ApplicationRecord
+  self.table_name = "user"
   require "bcrypt"
-  validates :email, presence: true, uniqueness: true
-  validates :password_hash, presence: true  # Asegúrate de que se ajuste según tu migración
+  validates :password_hash, presence: true
   validates :username, presence: true, uniqueness: true
 
   def password

@@ -47,7 +47,7 @@ export class PdfGeneratorService {
       this.createTable(doc, data);
     } else {
       // Mostrar mensaje de error si los datos no son válidos
-      doc.fontSize(12).text('Error: Los datos proporcionados no son válidos para generar el reporte.', { align: 'left' });
+      doc.fontSize(12).text(' ERROR: LOS DATOS PROPORCIONADOS NO SON VALIDOS PARA GENERAR EL REPORTE.', { align: 'left' });
     }
 
     doc.end();

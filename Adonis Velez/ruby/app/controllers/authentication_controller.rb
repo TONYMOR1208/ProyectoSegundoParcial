@@ -11,7 +11,7 @@ class AuthenticationController < ApplicationController
       token = jwt_encode({user_id: @user.id})
       render json: {token: token}, status: :ok
     else
-      render json: {error: 'usuario o contraseña invalido'}, status: :unauthorized
+      render json: {error: 'Usuario o contraseña inválido'}, status: :unauthorized
     end
   end
 
@@ -30,5 +30,4 @@ class AuthenticationController < ApplicationController
   def user_params
     params.permit(:email, :username, :password, :password_confirmation)
   end
-
 end

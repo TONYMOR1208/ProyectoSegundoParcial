@@ -1,5 +1,5 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Prestamo } from 'src/graphql/prestamo/entities/prestamo.entity';
 
 @ObjectType()
@@ -25,5 +25,6 @@ export class Devolucion {
     () => Prestamo, 
     prestamo => prestamo.devolucion,
     {eager:true })
+  @JoinColumn({name: 'prestamo_id'})
   prestamo: Prestamo;
 }

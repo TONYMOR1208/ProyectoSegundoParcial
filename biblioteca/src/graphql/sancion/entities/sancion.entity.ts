@@ -1,5 +1,5 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Usuario } from '../../usuario/entities/usuario.entity';
 
 @ObjectType()
@@ -29,5 +29,6 @@ export class Sancion {
     () => Usuario, 
     usuario => usuario.sancion,
     {eager: true})
+    @JoinColumn({name: 'usuario_id'})
   usuario: Usuario;
 }
